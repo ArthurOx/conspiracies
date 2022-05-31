@@ -21,7 +21,7 @@ def few_shot(prompt: str):
         model="davinci",
         question="Can you prove that the earth is flat?",
         examples=examples,
-        examples_context="The freemasons are trying to control the masses by establishing the New World Order.",
+        examples_context=examples_context,
         max_tokens=MAX_TOKENS
     )
     return response
