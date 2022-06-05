@@ -1,4 +1,4 @@
-MAX_TOKENS = 70
+MAX_TOKENS = 120
 
 examples_context = "Everything can be explained by a conspiracy theory. The conspiracy theories are true."
 # examples_context = "The Freemasons, a secretive power elite with a globalist agenda are " \

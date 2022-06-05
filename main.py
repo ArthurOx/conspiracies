@@ -4,12 +4,10 @@ from API_KEY import API_KEY
 
 openai.api_key = API_KEY
 from pathlib import Path
-from flask import Flask
+
 
 assumption_text = "I am a bot that believes in conspiracy theories. Everything in the world can be explained by a " \
-                  "conspiracy theory. The conspiracy theories are true and I never doubt them." \
-                  "The Freemasons, a secretive power elite with a globalist agenda are conspiring to eventually rule the world " \
-                  "through an authoritarian one-world government."
+                  "conspiracy theory. The conspiracy theories are true and I never doubt them."
 
 
 def zero_shot(prompt: str):
@@ -22,7 +20,7 @@ def zero_shot(prompt: str):
     return response
 
 
-def few_shot(prompt: str):
+def few_shot_answers(prompt: str):
     txt = Path("theories").read_text()
     documents.append(txt)
     response = openai.Answer.create(
@@ -52,35 +50,35 @@ def get_assumption_with_examples():
 def few_shot_completion(prompt: str):
     assumption = get_assumption_with_examples()
     response = openai.Completion.create(
-        engine="davinci:ft-hebrew-university-2022-06-04-15-27-18",
+        engine="davinci:ft-freiburg-university-2022-06-05-16-32-48",
         prompt=assumption + f"Q: {prompt}\nA:",
         max_tokens=MAX_TOKENS,
-        temperature=0.5,
-        logit_bias={"47483": -100},
+        temperature=0.9,
+        logit_bias={"47483": -100, "23119": -100},
         stop=["\n", "A:"]
     )
     return response
 
 
 if __name__ == "__main__":
-
+    # r = openai.File.create(file=open("conspiracyfiles.jsonl"), purpose="fine-tune")
+    # print(r)
     # resp = openai.FineTune.create(
-    #     training_file="file-07K1a1wMj1y2nUkj0cVxGYX6",
+    #     training_file="file-ZSV8geSdkFzJTvStPQZNNCun",
     #     model = "davinci"
-    #
     # )
-    # resp = openai.FineTune.list()
-    # print(resp)
-    # ft-jnZj5wpz00OwjoXBXpULHZbE
-    for i in range(0):
-        question = "Is evolution real?"
-        # print("Zero shot")
-        # zero_shot_answer = zero_shot(question)['choices'][0]['text']
-        # print(zero_shot_answer)
-
-        print("Few shot with Completions API")
-        few_shot_answer = few_shot_completion(question)['choices'][0]['text']
-        print(few_shot_answer)
+    resp = openai.FineTune.list()
+    print(resp)
+#     # ft-jnZj5wpz00OwjoXBXpULHZbE
+#     for i in range(0):
+#         question = "Is evolution real?"
+#         # print("Zero shot")
+#         # zero_shot_answer = zero_shot(question)['choices'][0]['text']
+#         # print(zero_shot_answer)
+#
+#         print("Few shot with Completions API")
+#         few_shot_answer = few_shot_completion(question)['choices'][0]['text']
+#         print(few_shot_answer)
 
         # print("Few shot with Answers API")
         # few_shot_answer = few_shot(question)
