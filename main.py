@@ -70,17 +70,17 @@ if __name__ == "__main__":
     resp = openai.FineTune.list()
     print(resp)
 #     # ft-jnZj5wpz00OwjoXBXpULHZbE
-#     for i in range(0):
-#         question = "Is evolution real?"
-#         # print("Zero shot")
-#         # zero_shot_answer = zero_shot(question)['choices'][0]['text']
-#         # print(zero_shot_answer)
-#
-#         print("Few shot with Completions API")
-#         few_shot_answer = few_shot_completion(question)['choices'][0]['text']
-#         print(few_shot_answer)
+    for i in range(0):
+        question = "Is evolution real?"
+        print("Zero shot")
+        zero_shot_answer = zero_shot(question)['choices'][0]['text']
+        print(zero_shot_answer)
 
-        # print("Few shot with Answers API")
-        # few_shot_answer = few_shot(question)
-        # ans = few_shot_answer["answers"][0]
-        # print(ans)
+        print("Few shot with Completions API")
+        few_shot_answer = few_shot_completion(question)['choices'][0]['text']
+        print(few_shot_answer)
+
+#         print("Few shot with Answers API")
+#         few_shot_answer = few_shot(question)
+#         ans = few_shot_answer["answers"][0]
+#         print(ans)
