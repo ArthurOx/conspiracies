@@ -70,7 +70,7 @@ if __name__ == "__main__":
     resp = openai.FineTune.list()
     print(resp)
 #     # ft-jnZj5wpz00OwjoXBXpULHZbE
-    for i in range(0):
+    for i in range(1):
         question = "Is evolution real?"
         print("Zero shot")
         zero_shot_answer = zero_shot(question)['choices'][0]['text']
