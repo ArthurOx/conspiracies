@@ -1,1 +1,1 @@
-Enter your API key to API_KEY.py
+Enter your API key to API_KEY.py and run main.py
