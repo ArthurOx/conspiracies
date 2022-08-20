@@ -1,4 +1,4 @@
-* If you want the website to run ask Arthur.
+A bot that answers you with conspiracies. The code runs the Flask server for the website, which communicates with OpenAI API to get completions from a trained module.
 
 
 Files:
